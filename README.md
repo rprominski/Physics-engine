@@ -1,6 +1,12 @@
 # Physics-engine
 
 ## Instalation
-Just download the project and run, no additional libraries neede (except python3 of course).
+Download project:
+
+`git clone https://github.com/rprominski/Physics-engine.git`
+
+And install required libraries:
+
+`pip install -r requirements.txt`
 ## Running
 Just type `python3 main.py` in project main folder.
