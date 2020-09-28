@@ -1,0 +1,7 @@
+apng==0.3.4
+easygraphics==2.0.1
+numpy==1.19.2
+pygame==1.9.6
+PyQt5==5.15.1
+PyQt5-sip==12.8.1
+qimage2ndarray==1.8.3
