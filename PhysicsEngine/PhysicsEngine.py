@@ -6,7 +6,7 @@ from typing import List
 from Body.Body import Body
 from BodyMover.BodyMover import moveBody
 from CollisionHandler.CollisionHandler import areColliding, elasticCollision
-from DataVisualiser.DataVisualiser import printConsole
+from DataVisualiser.DataVisualiser import drawAllBodies
 from TemporaryForce.TemporaryForce import TemporaryForce
 from Vector.Vector3 import Vector3
 
@@ -41,11 +41,11 @@ class PhysicsEngine:
         self.temporaryForces = [x for x in self.temporaryForces if x.tickAndCheck()]
         self.checkCollisions()
         self.moveAllBodies()
-        printConsole(self.bodies)
 
     def start(self):
         while True:
             self.tick()
+            drawAllBodies(self.bodies)
             time.sleep(self.tickInterval)
 
     def countResultantTemporaryForce(self):
