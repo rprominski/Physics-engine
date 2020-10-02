@@ -1,11 +1,11 @@
 from dataclasses import dataclass
 
-from Vector.Vector3 import Vector3
+from numpy.core.multiarray import ndarray
 
 
 @dataclass
 class TemporaryForce:
-    force: Vector3
+    force: ndarray
     ttl: int
 
     def tickAndCheck(self):

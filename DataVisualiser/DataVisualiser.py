@@ -28,12 +28,6 @@ def initGraphics():
     set_fill_color(Color.RED)
 
 
-# print(body.position, body.shape)
-
-
-# pause()
-
-
 def endVisualisation():
     close_graph()
 
@@ -49,7 +43,7 @@ def drawSphere(x: float, y: float, radius: float):
 def drawBody(body: Body):
     if isinstance(body.shape, Sphere):
         shape: Sphere = body.shape
-        drawSphere(body.position.x, body.position.y, shape.radius)
+        drawSphere(body.position[0], body.position[1], shape.radius)
 
 
 def drawAllBodies(bodies: List[Body]):

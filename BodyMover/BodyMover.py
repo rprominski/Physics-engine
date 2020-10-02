@@ -1,10 +1,10 @@
+from numpy.core.multiarray import ndarray
+
 from Body.Body import Body
-
 from Body.ImmovableBody import ImmovableBody
-from Vector.Vector3 import Vector3
 
 
-def moveBody(body: Body, globalResultantforce: Vector3, resultantGravity: Vector3, time: float):
+def moveBody(body: Body, globalResultantforce: ndarray, resultantGravity: ndarray, time: float):
     if isinstance(body, ImmovableBody):
         return
 

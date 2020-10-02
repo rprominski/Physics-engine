@@ -1,7 +1,8 @@
 import math
 
+import numpy as np
+
 from Body.Body import Body
-from Vector.Vector3 import Vector3
 
 
 class ImmovableBody(Body):
@@ -11,7 +12,7 @@ class ImmovableBody(Body):
 
     @property
     def velocity(self):
-        return Vector3(0, 0, 0);
+        return np.array([0, 0, 0]);
 
     @velocity.setter
     def velocity(self, velocity):

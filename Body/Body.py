@@ -1,14 +1,15 @@
+from numpy.core.multiarray import ndarray
+
 from Shape.Shape import Shape
-from Vector.Vector3 import Vector3
 
 
 class Body:
-    position: Vector3
-    velocity: Vector3
+    position: ndarray
+    velocity: ndarray
     shape: Shape
     mass: float
 
-    def __init__(self, positon: Vector3, velocity: Vector3, mass: float, shape: Shape):
+    def __init__(self, positon: ndarray, velocity: ndarray, mass: float, shape: Shape):
         self.position = positon
         self.velocity = velocity
         self.mass = mass

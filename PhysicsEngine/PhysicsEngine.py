@@ -3,18 +3,20 @@ import math
 import time
 from typing import List
 
+import numpy as np
+from numpy.core.multiarray import ndarray
+
 from Body.Body import Body
 from BodyMover.BodyMover import moveBody
 from CollisionHandler.CollisionHandler import areColliding, elasticCollision
 from DataVisualiser.DataVisualiser import drawAllBodies
 from TemporaryForce.TemporaryForce import TemporaryForce
-from Vector.Vector3 import Vector3
 
 
 class PhysicsEngine:
     bodies: List[Body] = []
-    globalResultantForce = Vector3(0, 0, 0)
-    resultantGravity = Vector3(0, 0, 0)
+    globalResultantForce = np.array([0, 0, 0])
+    resultantGravity = np.array([0, 0, 0])
     temporaryForces: List[TemporaryForce] = []
     tickInterval = 0.5
 
@@ -24,7 +26,7 @@ class PhysicsEngine:
     def addGlobalForce(self, force):
         self.globalResultantForce += force
 
-    def addGravity(self, gravity: Vector3):
+    def addGravity(self, gravity: ndarray):
         self.resultantGravity += gravity
 
     def moveAllBodies(self):
@@ -32,7 +34,7 @@ class PhysicsEngine:
         for body in self.bodies:
             moveBody(body, resultantForce, self.resultantGravity, self.tickInterval)
 
-    def addTemporaryForce(self, force: Vector3, duration: float, ticks: bool = True):
+    def addTemporaryForce(self, force: ndarray, duration: float, ticks: bool = True):
         if not ticks:
             duration = duration / self.tickInterval
         self.temporaryForces.append(TemporaryForce(force, math.ceil(duration)))
@@ -49,7 +51,7 @@ class PhysicsEngine:
             time.sleep(self.tickInterval)
 
     def countResultantTemporaryForce(self):
-        resultantForce = Vector3(0, 0, 0)
+        resultantForce = np.array([0, 0, 0])
 
         for force in self.temporaryForces:
             resultantForce += force.force

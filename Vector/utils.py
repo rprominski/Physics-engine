@@ -1,11 +1,11 @@
 import math
 
-from Vector.Vector3 import Vector3
+from numpy.core.multiarray import ndarray
 
 
-def segmentLength(a: Vector3, b: Vector3):
-    return math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2 + (a.z - b.z) ** 2)
+def segmentLength(a: ndarray, b: ndarray):
+    return math.sqrt((a[0] - b[0]) ** 2 + (a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2)
 
 
-def innerProduct(a: Vector3, b: Vector3):
-    return a.x * b.x + a.y * b.y + a.z * b.z
+def innerProduct(a: ndarray, b: ndarray):
+    return a @ b
