@@ -1,20 +1,26 @@
+from numpy.core.multiarray import ndarray
+
 from Body.Body import Body
 from Body.ImmovableBody import ImmovableBody
 from Shape.Sphere import Sphere
 from Vector.utils import segmentLength, innerProduct
 
 
-def areSpheresColliding(b, b2):
-    r1 = b.shape.radius
-    r2 = b2.shape.radius
-    if segmentLength(b.position, b2.position) <= (r1 + r2):
+def areSpheresIntersecting(position: ndarray, position2: ndarray, radius: float, radius2: float):
+    if segmentLength(position, position2) <= (radius + radius2):
         return True
     return False
 
 
+def areCubeAndSphereIntersecting(cubePosition: ndarray, spherePosition: ndarray, sideLength: float, radius):
+    pass
+
+
 def areColliding(b: Body, b2: Body):
     if isinstance(b.shape, Sphere) and isinstance(b2.shape, Sphere):
-        return areSpheresColliding(b, b2)
+        s: Sphere = b.shape
+        s2: Sphere = b2.shape
+        return areSpheresIntersecting(b.position, b2.position, s.radius, s2.radius)
 
 
 def elasticCollision(b: Body, b2: Body):
